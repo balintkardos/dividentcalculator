@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Divident Calculator</title>
+</head>
+<body>
+    
+    <div class="warpped">
+        <div class="right">
+            <div class="head">
+                <div class="logo">Divident  </div>10
+                <div class="title">Calculate your investment</div>
+            </div>
+            <div class="questions">
+                <div class="question">
+                    <div class="ques">How much you want invest? </div> 
+                    <div class="in"> 
+                        <input class="input-money" id="money" type="number"> 
+                        <div class="end">$</div> 
+                    </div>  
+                </div>
+                <div class="question"><div class="ques">For how many years?</div> <div class="in"> <input  id="year" type="number"> <div class="end">year</div> </div> </div>
+                <div class="question"><div class="ques">What is the divident?</div> <div class="in"> <input id="div" type="number"> <div class="end">%</div> </div> </div>
+                <div class="question"><div class="ques">Averag year grow?</div> <div class="in"> <input id="grow" type="number"><div class="end">%</div></div></div> 
+            </div>
+            <button class="cal" id="cal" onclick="calculate()" >Calculate</button>
+        </div>
+        <div class="left" id="years">
+            <div class="year">
+                <div class="year--name">Fist year</div>
+                <div class="start">Started 000$</div>
+                <div class="q">Q1 000$</div>
+                <div class="q">Q2 000$</div>
+                <div class="q">Q3 000$</div>
+                <div class="q">Q4 000$</div>
+                <div class="grow">Simple growt 0000$</div>
+                <div class="line">
+                    <svg width="419" height="7" viewBox="0 0 419 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3L416 4.01225" stroke="#38424C" stroke-width="5" stroke-linecap="square"/>
+                    </svg>
+                </div>
+            </div>
+            <!--
+            <div class="year">
+                <div class="year--name">Second year</div>
+                <div class="start">Started 000$</div>
+                <div class="q">Q1 000$</div>
+                <div class="q">Q2 000$</div>
+                <div class="q">Q3 000$</div>
+                <div class="q">Q4 000$</div>
+                <div class="grow">Simple growt 0000$</div>
+                <div class="line">
+                    <svg width="419" height="7" viewBox="0 0 419 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3L416 4.01225" stroke="#38424C" stroke-width="5" stroke-linecap="square"/>
+                    </svg>
+                </div>
+            </div>
+            -->
+            <div class="return">
+                <div class="return--title">000000 $</div>
+                <div class="return--plus">+ 000 $</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculate(){
+            let yearselement = document.getElementById("years");
+            var text = '';
+            var money=0.0;
+            money= Number(document.getElementById('money').value);
+            var year = 0.0;
+            
+            year= Number(document.getElementById('year').value);
+            var div = 0.0;
+            div= Number(document.getElementById('div').value);
+            div=div/4;
+            div = Math.round((div + Number.EPSILON) * 100) / 100;
+            var grow= 0.0;
+            grow= Number(document.getElementById('grow').value);
+            var invest= Number(money);
+            for(var i=0; i< year; i++){
+                var tmoney= Number(money);
+                console.log("Year "+(i+1));
+                text += '<div class="year"><div class="year--name">Year ';
+                var t = i+1;
+                text += t;
+                text +='</div> <div class="start">Started: ';
+                money = Math.round((money + Number.EPSILON) * 100) / 100;
+                text += money;
+                text +='$</div>';
+                for(var j=0; j< 4; j++){
+                    var tdiv =Number( money * (div/100));
+                    tdiv= Math.round((tdiv + Number.EPSILON) * 100) / 100;
+                    tdiv= tdiv * 0.7;
+                    tdiv= Math.round((tdiv + Number.EPSILON) * 100) / 100;
+                    text += '<div class="q">Q';
+                    t=j+1;
+                    text += t;
+                    text +=' ';
+                    text += tdiv;
+                    text += '$</div>';
+                    invest= Number(invest+tdiv);
+                    money= money + tdiv;
+                    money= Math.round((money + Number.EPSILON) * 100) / 100;
+                    console.log("Q"+(j+1)+": " + tdiv + "$");
+                }
+                tmoney= tmoney * (grow/100);
+                text += '<div class="grow">Simple growt ';
+                tmoney= Math.round((tmoney + Number.EPSILON) * 100) / 100;
+                text += tmoney;
+                text += '$</div>';
+                console.log("A grow hozott: "+ tmoney);
+                money=money+tmoney;
+                console.log("év vége :"+money);
+                text += '<div class="line"><svg width="419" height="7" viewBox="0 0 419 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3L416 4.01225" stroke="#38424C" stroke-width="5" stroke-linecap="square"/></svg></div>';
+            
+            }
+            text += '</div>';
+            text += '<div class="return">';
+
+            
+
+            console.log("investment: "+invest  );
+            console.log("money: "+money  );
+            var neg= Number(money - invest );
+            console.log("neg: "+ neg  );
+            neg= Number(neg*0.4);
+            money=Number(money-neg);
+            console.log("taxt: -"+neg   );
+            console.log("tenyleges taxt után: "+money);
+            text +='<div class="return--title">';
+            money= Math.round((money + Number.EPSILON) * 100) / 100;
+            money = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            text += money;
+            text += '$</div>';
+            text +='<div class="return--plus">+';
+            neg= Math.round((neg + Number.EPSILON) * 100) / 100;
+            text += neg;
+            text += '$</div>';
+
+
+            text += '</div>';
+            yearselement.innerHTML = text;
+        }
+       
+
+
+
+    </script>  
+</body>
+</html>

@@ -1,0 +1,254 @@
+body{
+    font-family: 'Special Elite', cursive;
+    background: #070D3C;
+
+    .warpped{
+        display: flex;
+
+        .right{
+            width: 40%;
+            margin: auto;
+
+            .head{
+                .logo{
+                    position: absolute;
+                    width: 717px;
+                    height: 155px;
+                    left: 74px;
+                    top: 56px;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 150px;
+                    line-height: 150px;
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    color: #162360;
+                    opacity: 0.4;
+                }
+                .title{
+                    position: absolute;
+                    width: 495px;
+                    height: 36px;
+                    left: 98px;
+                    top: 137px;
+                    font-family: 'Special Elite';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 36px;
+                    line-height: 36px;
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    color: #15B582;
+                }
+            }
+            .questions{
+                width: 80%;
+                margin: auto;
+                margin-top: 200px;
+
+
+                .question{
+                    display: flex;
+                    border: 3px solid #162360;
+                    box-sizing: border-box;
+                    padding: 20px;
+
+                    .ques{
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 22px;
+                        line-height: 22px;
+                        display: flex;
+                        align-items: center;
+                        text-align: center;
+                        color: #15B582;
+                    }
+                    
+                    .in {
+                        margin-left: 10px;
+                        display: flex;
+                        flex-direction: row;
+                        background:#38424C;
+                        
+
+                        input{
+                            border: 0;
+                            outline: 0;
+                            background: transparent;
+                            color: #EBEFF1;
+                            width: 70px;
+                            padding: 5px;
+                            font-size: 22px;
+
+
+                            &:required,&:invalid { box-shadow:none; }
+                        }
+
+                        .input-money{
+                            width: 100px;
+                        }
+                   
+
+                        .end{
+                            margin-top: 5px;
+                            color: #EBEFF1;
+                            padding: 5px;
+                            font-size: 22px;
+                       
+                        }
+                    }
+                }
+
+
+            }   
+            .cal{
+                font-family: 'Special Elite', cursive;
+                display: inline-block;
+                padding: 20px;
+                margin: auto;
+                margin-top: 30px;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 40px;
+                line-height: 40px;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                color: #15B582;
+                background: #070D3C;
+                box-shadow: -6px -6px 12px #0f1750, 6px 6px 12px #040824;
+                border: 0;
+                border-radius: 24px;
+
+                &:hover{
+                    box-shadow: inset -6px -6px 12px #0f1750, inset 6px 6px 12px #040824;
+                }
+                
+            }
+
+            
+
+        }
+
+        .left {
+            width: 40%;
+            margin: auto;
+            margin-top: 250px;
+
+
+            .year{
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 22px;
+                color: #EBEFF1;
+
+                .year--name{
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 22px;
+                    line-height: 22px;
+                    display: flex;
+                    align-items: center;
+                    color: #B62D4F;
+                }
+
+                .start {
+                    margin-left: 30px;
+                    font-size: 18px;
+                }
+
+                .q {
+                    font-size: 15px;
+                    margin-left: 60px;
+                    opacity: 70%;
+                }
+
+                .grow {
+                    margin-left: 30px;
+                    font-size: 18px;
+                }
+
+            }
+            .return--title {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 48px;
+                line-height: 48px;
+                color: #15B582;
+                margin-left: 100px;
+                margin-top: 10px;
+            }
+            .return--plus {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 18px;
+                display: flex;
+                align-items: center;
+                text-align: right;
+                color: #38424C;
+                margin-left: 100px;
+            }
+        }
+    }
+
+    
+}
+
+@media only screen and (max-width: 930px) {
+    body{
+        display:flex;
+    
+        .warpped{
+            flex-direction: column;
+            width: 100%;
+    
+            .right {
+                width: 100%;
+                
+                .head{
+                    .logo{
+                            width: 358px;
+                            height: 77px;
+                            left: 37px;
+                            top: 28px;
+                            font-weight: 200;
+                            font-size: 75px;
+                            line-height: 75px;
+                    }
+                    .title{
+                        width: 347px;
+                        height: 18px;
+                        left: 49px;
+                        top: 68px;
+                        font-weight: 200;
+                        font-size: 24px;
+                        line-height: 18px;
+                    }
+                }
+                .questions{
+                    margin-top: 100px;
+                    margin-left: 20px;
+                    width: 100%;
+                }
+            }
+            .left {
+                width: 100%;
+                margin-top: 50px;
+                margin-left: 30px;
+
+                .year{
+                    .line{
+                        margin-left: -40px;
+                    }
+                }
+            }
+        }
+    }  
+
+    
+}
+
